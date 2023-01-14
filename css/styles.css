@@ -322,7 +322,11 @@ button {
 	color: var(--white-color);
 }
 .footer-form {
+	position: relative;
+
 	display: flex;
+
+	overflow: hidden;
 }
 .footer-input {
 	padding-top: 8px;
@@ -338,12 +342,26 @@ button {
 	color: var(--white-color);
 	background-color: inherit;
 }
-.footer-input::placeholder {
+.footer-form-input-desc {
+	position: absolute;
+	top: 50%;
+	left: 16px;
+	transform: translate(0, -50%);
+
 	font-size: 12px;
 	line-height: 2;
 	letter-spacing: 0.04em;
 
 	color: rgba(255, 255, 255, 0.6);
+
+	transition: transform var(--transition-duration) var(--transition-timing-function);
+}
+.footer-input:focus + .footer-form-input-desc,
+.footer-input:not(:placeholder-shown) + .footer-form-input-desc {
+	transform: translate(-60px, -50%);
+}
+.footer-input:focus {
+	outline-offset: -2px;
 }
 .footer-subscribe-btn {
 	display: flex;
@@ -362,6 +380,9 @@ button {
 .footer-subscribe-btn:hover,
 .footer-subscribe-btn:focus {
 	background-color: var(--secondary-accent-color);
+}
+.footer-subscribe-btn:focus {
+	outline-offset: -2px;
 }
 .footer-subscribe-btn-txt {
 	margin-right: 16px;
